@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"limits": "c",
+			"iostream": "c",
+			"string.h": "c",
+			"cmath": "c",
+			"*.tcc": "c",
+			"cstdlib": "c"
+		}
+	}
+}

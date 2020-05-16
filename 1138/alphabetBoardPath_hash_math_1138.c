@@ -1,0 +1,126 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <stdbool.h>
+
+/*
+    ¥ý¦s¤@ŸÄ¤G???¤U?¡AŸÏ[0,0]-[0,4]~6¦æ5¦C¡A³Ì¦Z¤@¦æ¥u¦³¤@¦C¡C
+    1¡G¥Ó?¤@ŸÄ«Ü‹ëªºret¦r²Å¦ê¡A¥Î¤_«O¦s¨C¤@¦¸¦r²Åªº²¾¦ì¾Þ§@¦r²Å¦ê¡C
+    2¡G??¨CŸÄ¥Ø?¦r²Å¡A?ºâfrom->to¦ì¸m?²¾»Ý­n²¾‰Vªº¨B?¡C
+    3¡G¤l¨ç?ªð¦^­È«O¦s¨ì?ªG¤¤¡C
+    char * GetFrom2ToSteps()
+    1¡GŸÏfromªº˜ò¡A¨ìtoªº˜ò¡Aœ{¤@˜ç?¡A‰Î˜ò¤§šVª½?³Ìµu¡A?ý©¨«ªk¤@©w¬O³Ì¤Ö??¡C
+    2¡G¥i¥Hª½±µ¨Ï¥Îto(x, y) - from(x, y)¡A
+    3¡Gª`·N¤@¤U³Ì¦Z¤@¦æ¥u¦³¤@¦C¡A§Ú?¥i¥H°²‰z¡A¦pªG¤£»Ý­n‰V¡Aª½±µªð¦^!¡A»Ý­n‰V¦p¤U¡G
+        ¦pªG to.x == 5, ?ªí¥Ü­n²¾¨ì³Ì¦Z¤@¦æ¡A?¥ý²¾‰V¦æ¨ì¥Øªº¡A¦A‰V¦C¡C
+        ¨ä¥¦ªº¡A¤£ºÞ­þŸÄ?´º¡A?¥ý²¾‰V¦C¡A¦A‰V¦æ¡C
+*/
+
+#define MAXLEN 100
+#define ROWS 6
+#define COLS 5
+int g_matrix[ROWS][COLS];
+int g_from[2];
+int g_to[2];
+
+void PreHandle()
+{
+    for (int i = 0; i < ROWS - 1; i++) {
+        for (int j = 0; j < COLS; j++) {
+            g_matrix[i][j] = i * ROWS + j;
+        }
+    }
+    g_matrix[ROWS - 1][0] = 25;
+    for (int j = 1; j < COLS; j++) {
+        g_matrix[ROWS - 1][j] = -1;
+    }
+}
+
+char * GetFrom2ToSteps()
+{
+    if (g_from[0] == g_to[0] && g_from[1] == g_to[1]) {
+        return "!";
+    }
+    int rowSteps = g_to[0] - g_from[0];
+    int colSteps = g_to[1] - g_from[1];
+    int len = abs(rowSteps) + abs(colSteps) + 1 + 1;
+    char *ret = (char *)malloc(len);
+    memset(ret, 0x0, len);
+    int i = 0, j = 0;
+    int k = 0;
+    if (g_from[0] == ROWS - 1) {
+        // ¥ý‰V¦C
+        for (j = 0; j < abs(rowSteps); j++) {
+            if (rowSteps < 0) {
+                ret[j] = 'U';
+            } else {
+                ret[j] = 'D';
+            }            
+        }
+        for (i = 0; i < abs(colSteps); i++) {
+            if (colSteps < 0) {
+                ret[i + j] = 'L';
+            } else {
+                ret[i + j] = 'R';
+            }
+        }
+        ret[i + j] = '!';
+
+    } else {
+        // ¥ý‰V¦C
+        for (i = 0; i < abs(colSteps); i++) {
+            if (colSteps < 0) {
+                ret[i] = 'L';
+            } else {
+                ret[i] = 'R';
+            }
+        }
+        for (j = 0; j < abs(rowSteps); j++) {
+            if (rowSteps < 0) {
+                ret[i + j] = 'U';
+            } else {
+                ret[i + j] = 'D';
+            }            
+        }
+        ret[i + j] = '!';        
+    }
+    return ret;
+}
+
+char * alphabetBoardPath(char * target)
+{
+    char *ret = (char *)malloc(MAXLEN);
+    char *p = ret;
+    memset(ret, 0x0, MAXLEN);
+    PreHandle();
+    int len = strlen(target);
+    int idx;
+    g_from[0] = 0;
+    g_from[1] = 0;
+    char *onestep;
+    for (int i = 0; i < len; i++) {
+        idx = target[i] - 'a';
+        g_to[0] = idx / COLS;
+        g_to[1] = idx % COLS;
+        onestep = GetFrom2ToSteps();
+        g_from[0] = g_to[0];
+        g_from[1] = g_to[1];
+        int retLen = strlen(onestep);
+        strcpy(p, onestep);
+        p += retLen;
+        if (retLen > 1) {
+            free(onestep);
+        }
+        printf("%s\n", ret);
+    }
+    return ret;
+}
+
+int main()
+{
+    char * ret = alphabetBoardPath("zb");
+    printf("%s\n", ret);
+    free(ret);
+    return 0;
+}
