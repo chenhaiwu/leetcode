@@ -1,0 +1,18 @@
+{
+  "files.encoding": "UTF-8",
+  "files.associations": {
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "list": "cpp",
+    "xstring": "cpp",
+    "unordered_map": "cpp",
+    "string_view": "cpp",
+    "iosfwd": "cpp",
+    "xhash": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "xutility": "cpp",
+    "queue": "cpp"
+  }
+}
