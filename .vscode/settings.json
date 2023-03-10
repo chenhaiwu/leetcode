@@ -13,6 +13,16 @@
     "array": "cpp",
     "initializer_list": "cpp",
     "xutility": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "cmath": "cpp",
+    "xlocale": "cpp",
+    "ostream": "cpp",
+    "random": "cpp",
+    "map": "cpp",
+    "utility": "cpp",
+    "xtree": "cpp",
+    "type_traits": "cpp",
+    "limits": "cpp",
+    "algorithm": "cpp"
   }
 }
