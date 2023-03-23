@@ -1,0 +1,33 @@
+# qgpu itself
+/qgpu.ko
+
+# usual ones
+*.[oa]
+*.so
+*.d
+*.exe
+
+# backups
+*~
+.*.sw?
+
+# core
+core.*
+
+# kernel build
+.*.cmd
+.tmp_versions
+Module.symvers
+*.ko
+*.mod.c
+modules.order
+modules.builtin
+*.mod
+*.o_binary
+
+# index files
+*cscope.*
+tags
+
+# other files
+.vscode/
