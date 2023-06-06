@@ -31,3 +31,6 @@ tags
 
 # other files
 .vscode/
+*.dSYM/
+*.exe
+*.out

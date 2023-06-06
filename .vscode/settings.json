@@ -1,6 +1,18 @@
 {
     "files.associations": {
+        "*.md": "markdown",
         "vector": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "deque": "cpp",
+        "initializer_list": "cpp",
+        "queue": "cpp",
+        "string_view": "cpp",
+        "unordered_map": "cpp",
+        "algorithm": "cpp",
+        "__bit_reference": "cpp"
     }
 }
