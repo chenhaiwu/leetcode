@@ -13,6 +13,10 @@
         "string_view": "cpp",
         "unordered_map": "cpp",
         "algorithm": "cpp",
-        "__bit_reference": "cpp"
+        "__bit_reference": "cpp",
+        "iosfwd": "cpp",
+        "optional": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp"
     }
 }
